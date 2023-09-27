@@ -1,0 +1,66 @@
+CREATE TABLE employees (
+    emplID INTEGER PRIMARY KEY,
+    empName TEXT NOT NULL,
+    gender TEXT NOT NULL,
+    team TEXT NOT NULL,
+    tasksAssigned TEXT NOT NULL,
+    salary INTEGER 
+);
+
+-- Insert the values
+ INSERT INTO employees VALUES  (1,"Ryan","M","Front-End","Administration page",2000);
+ INSERT INTO employees VALUES  (2,"Rohit","M","Back-End","Administration page",115000);
+ INSERT INTO employees VALUES  (3,"Vishal","M","FUll-Stack","Home page",70000);
+ INSERT INTO employees VALUES  (4,"Pratham","M","ML","Chatting-Bot",150000);
+ INSERT INTO employees VALUES  (5,"Joanna","F","Front-End","Administration page",25000);
+ INSERT INTO employees VALUES  (6,"Ankit","M","Front-End","Test",15000);
+ INSERT INTO employees VALUES  (7,"HOSNASn","F","INFRA","SERVERS_DOMAIN",NULL);
+
+-- SELECT * FROM employees;
+
+-- 2nd Table
+CREATE TABLE sales (
+    saleID INTEGER PRIMARY KEY,
+    productID INTEGER NOT NULL,
+    productName TEXT NOT NULL,
+    price FLOAT(20) NOT NULL,
+    emplID INTEGER NOT NULL
+);
+
+INSERT INTO sales VALUES (1,40,"BAT",1999.9,3);
+INSERT INTO sales VALUES (2,41,"BALL",199.9,4);
+INSERT INTO sales VALUES (3,59,"PHONE",15000,1);
+INSERT INTO sales VALUES (4,111,"BIKE",200000,7);
+INSERT INTO sales VALUES (5,9,"ANY",199.9,2);
+
+-- SELECT * FROM sales ;
+
+
+-- JOINS
+-- INNER JOINS(keyword selects records that have matching values in both tables.)
+
+-- SELECT sales.price, sales.productName,employees.empName ,employees.team FROM sales 
+--     INNER JOIN employees ON employees.emplID=sales.emplID;
+
+-- LEFT JOINS (keyword returns all records from the left table (table1), and the matching records 
+-- (if any) from the right table (table2).)
+
+-- SELECT  employees.* ,sales.productName FROM employees 
+--     LEFT JOIN sales ON employees.emplID=sales.emplID;
+
+-- RIGHT JOINS  (keyword returns all records from the right table (table1), and the matching records 
+-- (if any) from the left table (table2).)
+ -- SELECT employees.emplID,sales.*  FROM sales RIGHT JOIN
+ --     employees ON sales.emplID= employees.emplID;
+
+-- CROSS JOINS 
+-- SELECT employees.emplID,sales.* FROM employees 
+--     CROSS JOIN sales where employees.emplID=sales.emplID ORDER BY employees.emplID;
+
+-- SELF JOINS
+SELECT A.empName AS empName1, B.empName AS empName2 FROM employees A,employees B
+WHERE A.empID !=B.emplID ;
+
+
+
+
