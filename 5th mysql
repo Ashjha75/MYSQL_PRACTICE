@@ -1,0 +1,51 @@
+CREATE TABLE employees (
+    emplID INTEGER PRIMARY KEY,
+    empName TEXT NOT NULL,
+    gender TEXT NOT NULL,
+    team TEXT NOT NULL,
+    tasksAssigned TEXT NOT NULL,
+    salary INTEGER 
+);
+
+-- Insert the values
+ INSERT INTO employees VALUES  (1,"Ryan","M","Front-End","Administration page",2000);
+ INSERT INTO employees VALUES  (2,"Rohit","M","Back-End","Administration page",115000);
+ INSERT INTO employees VALUES  (3,"Vishal","M","FUll-Stack","Home page",70000);
+ INSERT INTO employees VALUES  (4,"Pratham","M","ML","Chatting-Bot",150000);
+ INSERT INTO employees VALUES  (5,"Joanna","F","Front-End","Administration page",25000);
+ INSERT INTO employees VALUES  (6,"Ankit","M","Front-End","Test",15000);
+ INSERT INTO employees VALUES  (7,"HOSNASn","F","INFRA","SERVERS_DOMAIN",NULL);
+
+;
+
+-- 2nd Table
+CREATE TABLE students (
+    studentID INTEGER PRIMARY KEY,
+    StudentName TEXT NOT NULL,
+    gender TEXT NOT NULL,
+    course TEXT NOT NULL,
+    tasksAssigned TEXT NOT NULL,
+    fees INTEGER 
+);
+
+INSERT INTO students VALUES (1,"RAHUL","M","PYTHON","CRAWLER","1000");
+INSERT INTO students VALUES (2,"YOGESH","M","JAVA","JAVA APP","1200");
+INSERT INTO students VALUES (3,"VIJAY","M","JS","FRONTEND","1500");
+INSERT INTO students VALUES (4,"YXZ","F","ANGULAR","FRONTEND","1400");
+INSERT INTO students VALUES  (7,"HOSNASn","F","INFRA","SERVERS_DOMAIN",NULL);
+
+-- UNION
+-- SELECT * FROM employees  UNION  SELECT * FROM students;
+-- SELECT * FROM employees  UNION ALL SELECT * FROM students; --for duplicate items also
+
+-- SELECT * FROM employees WHERE gender !="F" UNION ALL SELECT * FROM students WHERE  gender="M" ORDER BY empName;
+
+-- GROUP
+-- SELECT COUNT(emplID),team FROM employees GROUP BY team;
+
+
+
+
+
+
+
