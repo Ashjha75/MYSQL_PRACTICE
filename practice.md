@@ -115,11 +115,14 @@ SELECT CONCAT(first_name, ' ', last_name) AS patient_name, date_of_birth
 FROM patient
 WHERE YEAR(date_of_birth) BETWEEN 1980 AND 2000;
 ```
+
 #### ------------------ or -------------------------
+
 ```sql
 SELECT CONCAT(first_name, ' ', last_name) AS patient_name, date_of_birth
 FROM patient
-WHERE YEAR(date_of_birth) >= 1980 AND YEAR(date_of_birth) <= 2000;
+WHERE YEAR(date_of_birth) >= 1980
+  AND YEAR(date_of_birth) <= 2000;
 ```
 
 ## Retrieve all doctors specializing in "Neurology" or "Orthopedics".
@@ -159,4 +162,79 @@ WHERE hospital_id = 2;
 SELECT *
 FROM appointment
 WHERE reason LIKE '%pain%';
+```
+
+## Retrieve patients who do not have a registered phone number.
+
+```sql
+SELECT *
+FROM patient
+WHERE phone_number IS NULL;
+```
+
+# 📊Sorting Data (ORDER BY)
+
+## Retrieve all hospitals sorted by their establishment date (oldest first).
+
+```sql
+SELECT name, address, establishment_date
+FROM hospitals
+ORDER BY establishment_date;
+```
+
+## List all patients in alphabetical order by last name.
+
+```sql
+SELECT first_name, last_name
+FROM patients
+ORDER BY last_name;
+```
+
+## Show all doctors sorted by specialty.
+
+```sql
+SELECT *
+FROM doctor
+ORDER BY specialty;
+```
+
+## List appointments sorted by appointment date in descending order.
+
+```sql
+SELECT *
+FROM appointment
+ORDER BY appointment_date desc;
+```
+
+## Retrieve all medical records ordered by diagnosis alphabetically.
+
+```sql
+SELECT *
+FROM medical_record
+ORDER BY diagnosis;
+```
+
+# 🔢Aggregate Functions (COUNT, SUM, AVG, MAX, MIN)
+
+## Count the total number of hospitals.
+
+```sql
+SELECT COUNT(*) AS total_hospitals
+FROM hospitals;
+```
+
+## Find the number of doctors in each specialty.
+
+```sql
+SELECT specialty, COUNT(*) AS total_doctors
+FROM doctor
+GROUP BY specialty;
+```
+
+## Count the number of male and female patients.
+
+```sql
+SELECT gender, COUNT(id) as patients
+FROM patient
+GROUP BY gender;
 ```
